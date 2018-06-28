@@ -1,28 +1,27 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    03_binary.py                                       :+:      :+:    :+:    #
+#    00_rainbow.py                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: mlewis-l <lerman.maggiel@gmaiil.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/06/13 16:43:44 by mlewis-l          #+#    #+#              #
-#    Updated: 2018/06/13 16:43:48 by mlewis-l         ###   ########.fr        #
+#    Created: 2018/06/14 13:42:15 by mlewis-l          #+#    #+#              #
+#    Updated: 2018/06/14 13:42:16 by mlewis-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-import sys
-import math
 
+import sys
+
+def print_colorful_text(string, st, fg, bg):
+    color_format = ';'.join([st, fg, bg])
+    print("\x1b[{}m {} \x1b[0m".format(color_format, string))
 
 
 def main(argv):
-    num_of_args = len(sys.argv)
-    if num_of_args != 2:
-        print("Error: Invalid Input")
-    if num_of_args == 2:
-        x = int(argv[1])
-        print(bin(x).strip('0b'))
-        print(oct(x).strip('0o'))
-        print(hex(x).strip('0x'))
-
+    argc = len(sys.argv)
+    if argc == 5:
+        print_colorful_text(argv[1], argv[2], argv[3], argv[4])
+    else:
+        print("Invalid number argument: Requires 4")
 
 main(sys.argv)
